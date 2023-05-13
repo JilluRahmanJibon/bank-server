@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 
 exports.createSignUpService = async (data) => {
+ 
   const result = await User.create(data);
   return result;
 };

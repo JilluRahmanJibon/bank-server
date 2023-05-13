@@ -33,13 +33,13 @@ app.get("/", (req, res, next) => {
 module.exports = app;
 
 
-app.get("/test",async(req,res) =>{
-  try{
+app.get("/test", async (req, res) => {
+  try {
     const allinfo = await Transtion.find({});
-    res.send({status:"ok",data:allinfo});
+    res.send({ status: "ok", data: allinfo });
 
   }
-  catch(error){
+  catch (error) {
 
     console.log(error);
   }

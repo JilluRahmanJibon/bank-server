@@ -5,7 +5,8 @@ const ObjectId = require("mongodb").ObjectId;
 const { MongoClient, ServerApiVersion, GridFSBucket } = require("mongodb");
 const app = require("./app");
 
- 
+
+
 
 
 // const bucket = new GridFSBucket(db, { bucketName: 'images' });
@@ -52,6 +53,8 @@ async function run() {
       .db("mobile-bank")
       .collection("withdraw-history");
     const noticeCollection = client.db("mobile-bank").collection("notice");
+
+   
     //deposit
     app.post("/api/v1/deposit", async (req, res) => {
       const info = req.body;
@@ -670,7 +673,7 @@ async function run() {
           return -1;
         }
       });
-      console.log(result);
+   
       const info = result.filter(
         (i) => i.amount === value || i.recipient === value
       );
@@ -683,6 +686,7 @@ async function run() {
       const allDepositHistory = await depositHistoryCollection
         .find({})
         .toArray();
+      
       const allDeposit = await depositCollection.find({}).toArray();
       const allApproveRequest = await requestApproveCollection
         .find({})
@@ -736,6 +740,7 @@ async function run() {
         previousMonth = 12;
         previousYear = currentYear - 1;
       }
+
       const previousDateArray = [previousMonth, previousDay, previousYear];
       const previousDateString = `${previousDateArray.join("/")}, 12:00:00 AM`;
       const previousDateMilliseconds = Date.parse(previousDateString);

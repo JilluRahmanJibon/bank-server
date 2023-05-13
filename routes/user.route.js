@@ -7,7 +7,7 @@ router.get("/", userController.getUsers);
 router.post("/registration", userController.singUp);
 router.post("/login", userController.logIn);
 router.get("/me", userController.getMe);
-router.post('/forgot-password',userController.forgotPassword)
+// router.post('/forgot-password',userController.forgotPassword)
 router
     .route("/:id")
     .get(userController.getUserById)
